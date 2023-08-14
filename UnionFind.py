@@ -4,6 +4,7 @@ class UnionFind:
         self.root = [i for i in range(n)]
         self.size = [1]*n
         self.edge = [0]*n
+        self.member = [[i] for i in range(n)]
         self.group = n
 
     def find(self, x):
@@ -28,11 +29,6 @@ class UnionFind:
         self.root[y] = x
         self.size[x] += self.size[y]
         self.edge[x] += self.edge[y]+1
+        self.member[x] += self.member[y]
         self.group -= 1
         return
-
-    def get_size(self, x):
-        return self.size[x]
-
-    def get_edge(self, x):
-        return self.edge[x]
